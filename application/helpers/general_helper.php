@@ -159,5 +159,3 @@ function getJobStockItemList($name = "title", $stockItem = null)
 	return $html;
 }
 ?>
-
-

@@ -1,11 +1,15 @@
-<button onclick="print_job()">PRINT NOW</button>
-
-<div id="jobPrint" style="height:8.3in; width:5.8in; font-size:8px; font-family:Arial, Helvetica, sans-serif;">
+<style>
+	td {
+		font-size: 12px;
+	}
+</style>
+<button onclick="print_job()" class="btn btn-success btn-flat">PRINT NOW</button>
+<div id="jobPrint" style="height:8.3in; width:11in; font-size:8px; font-family:Arial, Helvetica, sans-serif;">
 <?php
 		$compName = $jobInfo['company_name'] ? $jobInfo['company_name'] : $jobInfo['name'];
 		$html = '<table align="center" width="90%" border="0" style="border:0px solid;font-size:9px;height:3in;">
 		<td width="50%">
-				Job Id: '. $jobInfo['job_id'] .'
+				<h5>Job Number: '. $jobInfo['job_id'] .'</h5>
 			</td>
 			<td>
 				Date : 
@@ -14,12 +18,16 @@
 		</tr>
 		<tr id="regular">
 			<td width="50%">
-				Party Name: '. $compName .'
+				<h5>Party Name: '. $compName .'</h5>
 			</td>
 			<td>
-				Mobile : 
-				'. $jobInfo['mobile'] .'
+				<h5>Mobile : '. $jobInfo['mobile'] .'</h5>
 			</td>
+		</tr>
+		<tr>
+		<td colspan="2">
+			Address : ' . $jobInfo['address'] . '
+		</td>
 		</tr>
 		<tr>
 			<td colspan="2">
@@ -77,8 +85,8 @@
 					<td colspan="5" align="right">
 						Advance :
 					</td>
-					<td>'
-						. $jobInfo['job_advance']. '
+					<td>
+						<strong> '. $jobInfo['job_advance']. ' </strong>
 					</td>
 				</tr>
 				
@@ -89,7 +97,8 @@
 					<td align="right">
 						Due :
 					</td>
-					<td>'. $jobInfo['job_due']. '
+					<td>
+						<strong>'. $jobInfo['job_due']. '</strong>
 					</td>
 				</tr>
 			</table>
