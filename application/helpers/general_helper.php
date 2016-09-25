@@ -142,7 +142,7 @@ function getJobStockItemList($name = "title", $stockItem = null)
 	$query = $ci->db->get();			 
 	$result = $query->result_array();
 
-	$html = "<select class='form-control' name='" . $name . "' id='" . $name . "'><option>General</option>";
+	$html = "<select class='form-control' name='" . $name . "' id='" . $name . "'>";
 	foreach($result as $stock)
 	{
 		$selected = "";
@@ -158,4 +158,32 @@ function getJobStockItemList($name = "title", $stockItem = null)
 
 	return $html;
 }
+
+function create_pdf($content=null,$size ='A5-L') {
+	if($content) {
+		$ci = & get_instance();
+
+		$ci->load->library('Pdf');
+
+		$mpdf = new mPDF('', $size,8,'',4,4,10,2,4,4);
+		//$mpdf->SetHeader('CYBERA Print ART');
+		$mpdf->defaultheaderfontsize=8;
+		//$mpdf->SetFooter('{PAGENO}');
+		$mpdf->WriteHTML($content);
+		$mpdf->shrink_tables_to_fit=0;
+		$mpdf->list_indent_first_level = 0;  
+		$mpdf->keep_table_proportions = true;
+		//$filename = "jobs/".rand(1111,9999)."_".rand(1111,9999)."_Job_Order.pdf";
+		//$fname = "pdf_receipt/".rand(1111,9999)."_cybera.pdf";
+		$fname = "pdf_receipt/krishna.pdf";
+		$mpdf->Output($fname,'F');
+		return base_url().$fname;
+	}
+}
+
+function generate_pdf($html = null, $returnLink = true)
+{
+
+}
+
 ?>

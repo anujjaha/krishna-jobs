@@ -31,7 +31,7 @@ echo form_open('jobs/edit', $attributes);
 				</tr>
 				<tr>
 					<th> Sr </th>
-					<th> Category </th>
+					<th> Calendar Name </th>
 					<th> Details </th>
 					<th> Qty </th>
 					<th> Rate </th>
